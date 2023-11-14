@@ -9,8 +9,12 @@ def index(request):
         if request.method =="POST":
             data = request.POST['link-data']
             img= make(data)
-            generated_img= 'qr'+str(time.time())+'.png'
-            img.save(os.path.join(settings.MEDIA_ROOT,generated_img))
-            return render(request,'index.html',{'generated_img':generated_img})
+           buffer = BytesIO()
+        img.save(buffer, format='PNG')
+        qr_bytes = buffer.getvalue()
+
+       
+        qr_base64 = base64.b64encode(qr_bytes).decode('utf-8')
+            return render(request,'index.html',{'generated_img':qr_base64})
 
         return render(request,'index.html')
