@@ -19,7 +19,10 @@ def index(request):
            # img.save(buffer, format='PNG')
            # qr_bytes = buffer.getvalue()
            # qr_base64 = base64.b64encode(qr_bytes).decode('utf-8')
-            return render(request,'index.html',{'generated_img':img})
+            buffered = BytesIO()
+            img.save(buffered, format='PNG')
+            img_str = base64.b64encode(buffered.getvalue()).decode()
+            return render(request,'index.html',{'generated_img':img_str})
 
         return render(request,'index.html')
 
