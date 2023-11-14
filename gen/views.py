@@ -12,6 +12,8 @@ def index(request):
             data = request.POST['link-data']
             img= make(data)
             generated_img= 'qr'+str(time.time())+'.png'
-            return render(request,'index.html',{'generated_img':generated_img})
+            img.save(os.path.join(settings.MEDIA_ROOT, generated_img))
+            img_url = os.path.join(settings.MEDIA_URL, generated_img)
+            return render(request,'index.html',{'generated_img':img_url})
 
         return render(request,'index.html')
