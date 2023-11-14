@@ -96,7 +96,7 @@
     </form>
     <div id="displayqr">
             {% if generated_img %}
-            <img src="data:image/png;base64,{{generated_img}}" alt="qrcode" >
+            <img src="{{generated_img}}" alt="qrcode" >
             {% endif %}
     </div>
 </body>
