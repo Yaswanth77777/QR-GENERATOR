@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.conf import settings
-from qrcode import *
 from qrcode import make as make_qr_code
-import time
 import os
 import io
 import base64
@@ -13,7 +11,7 @@ def index(request):
             data = request.POST['link-data']
             img = make_qr_code(data)
             buffer = io.BytesIO()
-            qr_code_image.save(buffer, format="PNG")
+            img_str.save(buffer, format="PNG")
             img_str = base64.b64encode(buffer.getvalue()).decode()
             return render(request,'index.html',{'generated_img':img_str})
 
