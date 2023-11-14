@@ -11,7 +11,7 @@ def index(request):
             data = request.POST['link-data']
             img = make_qr_code(data)
             buffer = io.BytesIO()
-            img_str.save(buffer, format="PNG")
+            img_save.save(buffer, format="PNG")
             img_str = base64.b64encode(buffer.getvalue()).decode()
             return render(request,'index.html',{'generated_img':img_str})
 
