@@ -15,11 +15,11 @@ def index(request):
            # generated_img= 'qr'+str(time.time())+'.png'
            # img.save(os.path.join(settings.MEDIA_ROOT, generated_img))
            # img_url = os.path.join(settings.MEDIA_URL, generated_img)
-            buffer = BytesIO()
-            img.save(buffer, format='PNG')
-            qr_bytes = buffer.getvalue()
-            qr_base64 = base64.b64encode(qr_bytes).decode('utf-8')
-            return render(request,'index.html',{'generated_img':qr_base64})
+           # buffer = BytesIO()
+           # img.save(buffer, format='PNG')
+           # qr_bytes = buffer.getvalue()
+           # qr_base64 = base64.b64encode(qr_bytes).decode('utf-8')
+            return render(request,'index.html',{'generated_img':img})
 
         return render(request,'index.html')
 
