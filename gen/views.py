@@ -4,7 +4,7 @@ from qrcode import *
 from qrcode import make as make_qr_code
 import time
 import os
-from io 
+import io
 import base64
 from django.http import HttpResponse
 
