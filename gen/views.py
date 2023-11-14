@@ -11,10 +11,7 @@ def index(request):
         if request.method =="POST":
             data = request.POST['link-data']
             img= make(data)
-            buffer = BytesIO()
-            img.save(buffer, format='PNG')
-            qr_bytes = buffer.getvalue()
-            qr_base64 = base64.b64encode(qr_bytes).decode('utf-8')
-            return render(request,'index.html',{'generated_img':qr_base64})
+            generated_img= 'qr'+str(time.time())+'.png'
+            return render(request,'index.html',{'generated_img':generated_img})
 
         return render(request,'index.html')
