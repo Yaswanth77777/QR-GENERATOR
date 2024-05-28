@@ -93,12 +93,10 @@
     <h1 id="head">QR-CODE GENERATOR</h1>
     <form method="post">
         {% csrf_token %}
-        <br>
         <h1 id="heading">ENTER YOUR LINK HERE:</h1>
         <input type="text" name="link-data" id="link-data" placeholder="Enter URL links" required>
         <br>
         <button type="submit">GENERATE QR CODE</button>
-        <br>
     </form>
     <div id="displayqr">
         {% if generated_img %}
