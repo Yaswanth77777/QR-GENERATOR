@@ -71,7 +71,6 @@
             }
         }
         #download-btn {
-            display: none;
             margin-top: 0.625rem;
             padding: 0.625rem 1.25rem;
             background-color: #2196f3;
@@ -102,8 +101,20 @@
         {% if generated_img %}
             <img src="data:image/png;base64,{{ generated_img }}" alt="Generated QR Code" id="qr-code">
             <br>
-            <a id="download-btn" href="data:image/png;base64,{{ generated_img }}" download="qrcode.png">Download QR Code</a>
+            <button id="download-btn" onclick="downloadQRCode()">Download QR Code</button>
         {% endif %}
     </div>
+
+    <script>
+        function downloadQRCode() {
+            const imgData = document.getElementById('qr-code').src;
+            const a = document.createElement('a');
+            a.href = imgData;
+            a.download = 'qrcode.png';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
 </body>
 </html>
